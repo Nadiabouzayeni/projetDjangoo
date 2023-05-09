@@ -1,0 +1,19 @@
+{% extends './base.html' %}
+{% block content %}
+    <h1>Rechercher un produit</h1>
+    <form method="post" action="mesProduits.html">
+        <input type="text" name="query" placeholder="Entrez un terme de recherche">
+        <button type="submit">Rechercher</button>
+    </form>
+    {% if products %}
+        <h2>Résultats pour "{{ query }}" :</h2>
+        <ul>
+            {% for product in products %}
+                <li>{{ product.libellé }} - {{ product.prix }}</li>
+            {% endfor %}
+        </ul>
+        
+
+    {% endif %}
+{% endblock %}
+

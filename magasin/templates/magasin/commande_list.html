@@ -1,0 +1,34 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-4 mb-4 fw-bold text-center">List of Commands</h1>
+   
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for commande in commandes %}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Commande ID: {{ commande.id }}</h5>
+                    <p class="card-text">Produits: 
+                        {% for produit in commande.produits.all %}
+                            {{ produit.nom }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p class="card-text">Total: {{ commande.totalCde }}</p>
+                    <p class="card-text">Date de commande: {{ commande.dateCde }}</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="{% url 'commande_detail' commande.id %}" class="btn btn-secondary me-2"><i class="far fa-eye me-2"></i>View</a>
+                        <a href="{% url 'commande_delete' commande.id %}" class="btn btn-warning me-2"><i class="far fa-edit me-2"></i>update</a>
+                        <a href="{% url 'commande_delete' commande.id %}" class="btn btn-warning me-2"><i class="far fa-edit me-2"></i>delete</a>
+                    </div>
+                  
+                   
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+<!-- templates/magasin/commande.html -->
+
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class="display-4 mb-4 fw-bold text-center">Command</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form method='POST' class="post-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="mb-4 btn btn-danger btn-right">book</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

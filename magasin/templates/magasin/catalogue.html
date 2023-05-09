@@ -1,0 +1,183 @@
+{% extends './base.html' %}
+
+{% block title %} Product Catalog {% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="display-4 fw-bold mb-0">Browse our product catalog</h1>
+        
+      </div>
+      <hr class="my-4">
+    </div>
+  </div>
+  
+  <div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img class="card-img-top product-image" src="/media/{{product.img}}" alt="{{ product.libelle }}">
+        
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-center">{{ product.libellé }}</h5>
+          <p class="card-text text-center">{{ product.description }}</p>
+          <p class="card-text text-center">{{ product.prix }}</p>
+          
+          <p class="card-text text-center">{{ product.type }}</p>
+          
+          
+         
+          
+          <div class="d-grid">
+            <div class="row">
+                <div class="col-md-12">
+                  <hr class="my-4">
+                  <div class="d-flex justify-content-end align-items-center">
+                    <a href="{% url 'addcommande' %}?date={{ date.today }}&total={{ product.prix }}&produit={{ product.id }}" class="mb-4 btn btn-danger btn-right">Buy Now</a>
+
+                   
+                </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+  </div>
+  
+ 
+  
+</div>
+
+
+
+
+{% block styles %}
+<head>
+<link rel="stylesheet" href="static 'css/footer.css" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+  .product-image {
+    height: 200px;
+    object-fit: cover;
+  }
+  .card {
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .card-text {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: all 0.3s ease;
+  }
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+    transform: translateY(-2px);
+  }
+  
+</style>
+{% endblock %}
+<style>
+  /*---------------------------------------
+ Social section
+-----------------------------------------*/
+  footer {
+    padding: 0px 0px 0px 0px;
+    background-color: black;
+    margin: 0px;
+
+  }
+
+  .fa {
+    padding: 20px;
+    font-size: 23px;
+    width: 60px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+
+  .fa:hover {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+    margin-top: 30px;
+  }
+
+  .fa-whatsapp {
+    background: #25d366;
+    color: white;
+  }
+
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+  p {
+    text-align: center;
+
+  }
+</style>
+</head>
+<footer>
+
+  <p>
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-whatsapp"></a>
+    <a href="#" class="fa fa-instagram"></a>
+    <a href="#" class="fa fa-twitter"></a>
+  </p>
+
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
+          <p>Made in Tunisie <br>
+            Copyright &copy; 2020 LazyCoder </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

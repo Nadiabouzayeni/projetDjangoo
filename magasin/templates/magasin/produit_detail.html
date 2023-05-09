@@ -1,0 +1,55 @@
+{% extends './base.html' %}
+
+{% block content %}
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-header bg-danger text-white">
+            <h1 class="display-4 mb-4 fw-bold text-center">{{ produit.libelle }}</h1>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="/media/{{ produit.img }}" class="img-fluid rounded" alt="{{ produit.libellé }}">
+              </div>
+              <div class="col-md-8">
+                <p class="text-muted">{{ produit.description }}</p>
+                <h3>Prix: {{ produit.prix }}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <a href="{% url 'produit_update' produit.id %}" class="btn btn-primary w-100">Update </a>
+              </div>
+              <div class="col-md-6">
+                <form action="{% url 'produit_delete' produit.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger w-100">Delete</button>
+                
+                </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<style>
+.card-header {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.card-footer {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.btn-primary, .btn-danger {
+  border-radius: 25px;
+}
+</style>
+
+{% endblock %}

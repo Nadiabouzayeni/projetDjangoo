@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="display-4 mb-4 fw-bold text-center">List of Suppliers</h1>
+  <div class="my-4">
+    <center><a href="{% url 'addfournisseur' %}" class="btn btn-danger btn-right mb-4">Add Supplier</a></center>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fournisseur in fournisseurs %}
+        <tr>
+          <td>{{ fournisseur.nom }}</td>
+          <td>{{ fournisseur.id }}</td>
+          <td class="text-end">
+            <a href="{% url 'fournisseur_detail' fournisseur.id %}" class="btn btn-outline-light btn-dark text-black me-2">More info</a>
+            <a href="updatefournisseur/{{ fournisseur.nom }}" class="btn btn-info me-2">Edit</a>
+            <a href="deletefournisseur/{{ fournisseur.nom }}" class="btn btn-outline-light btn-dark text-black me-2">Delete</a>
+        </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

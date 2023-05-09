@@ -1,0 +1,35 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="display-4 mb-4 fw-bold text-center">Supplier Details</h1>
+  <div class="card mb-3">
+    <div class="card-header bg-primary text-white card">
+      <h4 class="card-header-title">{{ fournisseur.nom }}</h4>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Adresse: {{ fournisseur.adress }}</h5>
+      <p class="card-text">Email: {{ fournisseur.email }}</p>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for produit in produits %}
+        <div class="col">
+          <div class="card h-100">
+            <img src="/media/{{ produit.img }}" class="card-img-top" alt="{{ produit.libellé}}">
+            <div class="card-body">
+              <h5 class="card-title">{{ produit.libellé }}</h5>
+              <p class="card-text">{{ produit.description }}</p>
+              
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p>No products found</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
